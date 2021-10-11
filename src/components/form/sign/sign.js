@@ -1,37 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import img from "../../../images/Screenshot (4).png";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 
 const SignUp = () => {
   const [users, setUsers] = useState({
-    firstName: "",
+    names: "",
     email: "",
     password: "",
-    //confirmPassword: "",
+    confirmPassword: "",
   });
 
-  console.log(users);
+  const auth = useSelector((auth) => auth.sign);
+  useEffect(() => {
+    console.log("auth", auth);
+  }, [auth]);
 
-  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setUsers(e.target.value);
-    const name = e.target.name;
-    const email = e.target.email;
-    const value = e.target.value;
-    //const value = e.target.value;
-    setUsers(
-      { firstName: name },
-      { email: email },
-      { password: value }
-      //{ confirmPassword: value }
-    );
+    setUsers({ ...users, [e.target.name]: e.target.value });
+  };
+
+  const handleSign = (e) => {
+    e.preventDefault();
+    dispatch(SignUp(users));
+    setUsers("");
+    console.log(SignUp);
   };
 
   return (
-    <form className="sign-form" onSubmit={() => history.push("./companies")}>
+    <form className="sign-form">
       <img className="logo-img" src={img} alt="logo-img" />
       <h3> Sign Up</h3>
       <div className="mb-3">
@@ -40,11 +42,13 @@ const SignUp = () => {
         </label>
         <input
           type="text"
+          name="names"
           className="form-control"
           id="exampleInputName"
           aria-describedby="emailHelp"
-          value={users.firstName}
+          value={users.names}
           onChange={handleChange}
+          required={true}
         />
       </div>
       <div className="mb-3">
@@ -53,23 +57,42 @@ const SignUp = () => {
         </label>
         <input
           type="email"
+          name="email"
           className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           value={users.email}
           onChange={handleChange}
+          required={true}
         />
       </div>
+      <input
+        className="radio-button"
+        type="checkbox"
+        name="gender"
+        value={users.email}
+      />{" "}
+      Student
+      <br />
+      <input
+        className="radio-buttons"
+        type="checkbox"
+        name="gender"
+        value={users.email}
+      />{" "}
+      Company <br />
       <div className="mb-3">
         <label for="exampleInputPassword1" className="form-label">
           Password
         </label>
         <input
           type="password"
+          name="password"
           className="form-control"
           id="exampleInputPassword1"
           value={users.password}
           onChange={handleChange}
+          required={true}
         />
       </div>
       <div className="mb-3">
@@ -78,33 +101,19 @@ const SignUp = () => {
         </label>
         <input
           type="password"
+          name="confirmPassword"
           className="form-control"
           id="exampleInputPassword1"
-          value={users.password}
+          value={users.confirmPassword}
           onChange={handleChange}
+          required={true}
         />
       </div>
-
-      <div className="mb-3 form-check">
-        <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
-        />
-        <label className="form-check-label" for="exampleCheck1">
-          Check me out
-        </label>
-      </div>
-      <button
-        type="submit"
-        className="btn btn-primary "
-        // onClick={() => {
-        //   dispatch(addUser(user));
-        //   setUser("");
-        // }}
-      >
-        Submit
-      </button>
+      <Link to="./company">
+        <button type="submit" className="btn btn-primary " onClick={handleSign}>
+          Sign Up
+        </button>
+      </Link>
       <Link className="login" to="./login">
         Already have an account{" "}
       </Link>

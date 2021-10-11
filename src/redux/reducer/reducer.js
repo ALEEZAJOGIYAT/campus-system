@@ -3,8 +3,14 @@ import { ADD_USER, SIGN_UP_USERS } from "../action/actionTypes";
 const initialState = {
   data: [
     {
-      email: "alizajogyat09@gmail.com",
-      password: "jogi,.abcd",
+      stuEmail: "alizajogyat09@gmail.com",
+      stupassword: "homeplace1234",
+      stuRole: "student",
+    },
+    {
+      email: "sanaafzal12@gmail.com",
+      password: "home123",
+      role: "company",
     },
   ],
 };
@@ -20,8 +26,36 @@ export const reducer = (state = initialState, action) => {
           {
             id: id,
             user: user,
-            // userEmail: userEmail,
-            // userPassword: userPassword,
+          },
+        ],
+      };
+
+    default:
+      return state;
+  }
+};
+
+//signup reducer//
+const signState = {
+  newData: [
+    {
+      firstName: "",
+      email: "",
+      password: "",
+    },
+  ],
+};
+
+export const SignUpReducer = (state = signState, actions) => {
+  switch (actions.type) {
+    case SIGN_UP_USERS:
+      const { id, users } = actions.payload;
+      return {
+        ...state,
+        data: [
+          {
+            id: id,
+            users: users,
           },
         ],
       };
@@ -29,27 +63,3 @@ export const reducer = (state = initialState, action) => {
       return state;
   }
 };
-
-
-//signup reducer//
-const signState={
-  newData:[
-    {
-      firstName='',
-      email:'',
-      password:''
-    }
-  ]
-}
-
-// const SignUpReducer=(state=signState,actions)=>{
-//   switch (actions.type) {
-//   case SIGN_UP_USERS:
-//       return{
-//         ...state,
-//       }
-//       default:
-//         export state;
-//   }
-
-// }

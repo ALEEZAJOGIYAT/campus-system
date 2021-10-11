@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { ADD_USER, SIGN_UP_USERS } from "../action/actionTypes";
 
 export const addUser = (user) => {
@@ -6,12 +8,11 @@ export const addUser = (user) => {
     payload: {
       id: new Date().getTime().toString(),
       user: user,
-      // userEmail: userEmail,
-      // userPassword: userPassword,
     },
   };
 };
 
+//signup actions//
 export const signUpUsers = (users) => {
   return {
     type: SIGN_UP_USERS,
