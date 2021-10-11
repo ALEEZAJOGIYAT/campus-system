@@ -1,0 +1,70 @@
+@import "./config";
+
+body {
+  background: $background-color;
+  //height: 150vh;
+}
+
+.login-form {
+  //position: fixed;
+  border: 4px solid rgb(56, 2, 56);
+  height: 50rem;
+  width: 35rem;
+  margin-left: 46rem;
+  margin-top: 8rem;
+  align-items: center;
+  // margin-bottom: 3rem;
+  box-sizing: border-box;
+  background-color: white;
+
+  .form-label {
+    @include font-family;
+    //padding-inline: 3rem;
+    margin-inline: 2rem;
+    margin-top: 4rem;
+    font-size: 15px;
+  }
+  .form-control {
+    @include font-family;
+    //padding-inline: 3rem;
+    margin-inline: 2rem;
+    margin-top: 1rem;
+    width: 30rem;
+  }
+  .form-check-label {
+    @include font-family;
+    padding-inline: 1rem;
+    margin-inline: 1rem;
+    margin-top: 1.5rem;
+    font-size: 15px;
+  }
+  .form-check-input {
+    padding-inline: 0.5rem;
+    //margin-inline: 2rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .logo-img {
+    margin-inline: 20rem;
+    max-width: 10rem;
+    margin-top: 1rem;
+    margin-left: 12rem;
+  }
+  h3 {
+    @include font-family;
+    font-size: 15px;
+    margin-left: 11rem;
+    margin-top: 0.5rem;
+  }
+  .sign {
+    @include font-family;
+    // padding-inline: 1rem;
+    // margin-inline: 1rem;
+    // margin-top: 1.5rem;
+    font-size: 12px;
+  }
+  .btn {
+    margin: 2rem;
+    margin-top: 3rem;
+  }
+}

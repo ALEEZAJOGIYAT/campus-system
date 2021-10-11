@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.login-form {
+  position: fixed;
+  border: 4px solid #380238;
+  height: 50rem;
+  width: 35rem;
+  margin-left: 48rem;
+  margin-top: 15rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  margin-inline: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mb-3-email {
+  padding-inline: 3rem;
+  margin-inline: 2rem;
+  margin-top: 2rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.mb-3-passwrd {
+  padding-inline: 3rem;
+  margin-inline: 2rem;
+  margin-top: 1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.mb-3-form-check {
+  padding-inline: 3rem;
+  margin-inline: 2rem;
+  margin-top: 1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.btn-primary {
+  padding-inline: 3rem;
+  margin-inline: 2rem;
+  margin-top: 5rem;
+  margin-left: 8rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.login-img {
+  margin-inline: 20rem;
+  max-width: 10rem;
+  margin-top: 2rem;
+  margin-left: 10rem;
+}
+
+.mb-3-name {
+  padding-inline: 3rem;
+  margin-inline: 2rem;
+  margin-top: 1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 10px;
 }
