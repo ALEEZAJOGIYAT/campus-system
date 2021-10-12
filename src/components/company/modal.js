@@ -1,7 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { postJob } from "../../redux/action/actions";
 
 const Modal = () => {
-  const [modal, setModal] = useState();
+  const [vacancy, setVacancy] = useState({
+    title: "",
+    discription: "",
+    gpa: "",
+    salary: "",
+    date: "",
+  });
+
+  let job = useSelector((state) => state.vacancy);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   console.log("job", job);
+  // }, [job]);
+
+  const handleChange = (e) => {
+    setVacancy({
+      ...vacancy,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const post = (e) => {
+    e.preventDefault();
+    dispatch(postJob(vacancy));
+    console.log("jebde", vacancy);
+    setVacancy("");
+  };
 
   return (
     <div>
@@ -43,10 +72,13 @@ const Modal = () => {
                   </label>
                   <input
                     placeholder="Job Title here"
-                    name="jobTitle"
+                    name="title"
                     type="text"
                     id="title"
                     className="form-control"
+                    value={vacancy.title}
+                    onChange={handleChange}
+                    required={true}
                   />
                 </div>
                 <div className="form-group">
@@ -58,6 +90,7 @@ const Modal = () => {
                     name="jobDescription"
                     id="exampleForm.ControlTextarea1"
                     className="form-control"
+                    required={true}
                   />
                 </div>
                 <div className="form-group">
@@ -66,10 +99,13 @@ const Modal = () => {
                   </label>
                   <input
                     placeholder="Minimum Gpa Required"
-                    name="min_gpa"
+                    name="gpa"
                     type="number"
                     id="gpa"
                     className="form-control"
+                    value={vacancy.gpa}
+                    onChange={handleChange}
+                    required={true}
                   ></input>
                 </div>
                 <div className="form-group">
@@ -78,10 +114,13 @@ const Modal = () => {
                   </label>
                   <input
                     placeholder="Minimum Salary"
-                    name="min_salary"
+                    name="salary"
                     type="number"
                     id="salary"
                     className="form-control"
+                    value={vacancy.salary}
+                    onChange={handleChange}
+                    required={true}
                   ></input>
                 </div>
                 <div className="form-group">
@@ -90,10 +129,13 @@ const Modal = () => {
                   </label>
                   <input
                     placeholder="Last Date to Apply"
-                    name="lastDate"
+                    name="date"
                     type="date"
                     id="lastDateToApply"
                     className="form-control"
+                    value={vacancy.date}
+                    onChange={handleChange}
+                    required={true}
                   ></input>
                 </div>
                 <div className="modal-footer">
@@ -104,7 +146,11 @@ const Modal = () => {
                   >
                     Cancel
                   </button>
-                  <button type="button" className="btn btn-primary">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={post}
+                  >
                     Post Job
                   </button>
                 </div>

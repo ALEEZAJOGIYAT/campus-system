@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import img from "../../images/Screenshot (4).png";
+//import img from "../../images/Screenshot (4).png";
 
 const CompanyProfile = () => {
   let auth = useSelector((state) => state.login);
@@ -16,8 +16,6 @@ const CompanyProfile = () => {
       {auth.data.map((element) => (
         <div>
           <form className="login-form">
-            <img className="logo-img" src={img} alt="logo-img" />
-            <h3> LOGIN FORM </h3>
             <div className="mb-3">
               <label for="exampleInputEmail1" className="form-label">
                 Email address

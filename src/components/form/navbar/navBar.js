@@ -45,11 +45,11 @@ const NavBar = () => {
               </Link>
             ))}
             {/* {!(
-              window.location.pathname === "/comapnies" ||
+              window.location.pathname === "/comapn" ||
               window.location.pathname === "/profile"
             ) && 
             } */}
-            {navItemsCompany.map((items) => (
+            {/* {navItemsCompany.map((items) => (
               <Link to={items.route}>
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="#">
@@ -57,7 +57,7 @@ const NavBar = () => {
                   </a>
                 </li>
               </Link>
-            ))}
+            ))} */}
           </ul>
           <Modal />
 

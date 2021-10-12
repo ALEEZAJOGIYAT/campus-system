@@ -1,6 +1,11 @@
 import axios from "axios";
 
-import { ADD_USER, SIGN_UP_USERS } from "../action/actionTypes";
+import {
+  ADD_USER,
+  DELETE_JOBS,
+  POST_JOBS,
+  SIGN_UP_USERS,
+} from "../action/actionTypes";
 
 export const addUser = (user) => {
   return {
@@ -20,5 +25,24 @@ export const signUpUsers = (users) => {
       id: new Date().getTime().toString(),
       users: users,
     },
+  };
+};
+
+//POST JOB ACTION
+
+export const postJob = (details) => {
+  return {
+    type: POST_JOBS,
+    payload: {
+      id: new Date().getTime().toString(),
+      details: details,
+    },
+  };
+};
+
+export const deleteJobs = (id) => {
+  return {
+    type: DELETE_JOBS,
+    id,
   };
 };
