@@ -1,0 +1,88 @@
+* {
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.sign-form {
+  border: 4px solid #380238;
+  height: 67rem;
+  width: 45rem;
+  margin-left: 46rem;
+  margin-top: 7rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: white;
+}
+
+.sign-form .form-label {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 10px;
+  margin-inline: 2rem;
+  margin-top: 2rem;
+  font-size: 15px;
+}
+
+.sign-form .form-control {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 10px;
+  margin-inline: 2rem;
+  margin-top: 1rem;
+  width: 39rem;
+}
+
+.sign-form .form-check-label {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 10px;
+  padding-inline: 1rem;
+  margin-inline: 1rem;
+  margin-top: 1.5rem;
+  font-size: 15px;
+}
+
+.sign-form .form-check-input {
+  padding-inline: 0.5rem;
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+
+.sign-form .logo-img {
+  margin-inline: 20rem;
+  max-width: 10rem;
+  margin-top: 1rem;
+  margin-left: 12rem;
+}
+
+.sign-form h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 10px;
+  font-size: 15px;
+  margin-left: 11rem;
+  margin-top: 0.5rem;
+}
+
+.sign-form .login {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: bolder;
+  font-weight: 800;
+  font-size: 10px;
+  font-size: 12px;
+}
+
+.sign-form .btn {
+  margin: 2rem;
+}
+/*# sourceMappingURL=sign.css.map */

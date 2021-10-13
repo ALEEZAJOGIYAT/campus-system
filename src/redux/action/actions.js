@@ -1,7 +1,6 @@
-import axios from "axios";
-
 import {
   ADD_USER,
+  APPLY_JOBS,
   DELETE_JOBS,
   POST_JOBS,
   SIGN_UP_USERS,
@@ -43,6 +42,18 @@ export const postJob = (details) => {
 export const deleteJobs = (id) => {
   return {
     type: DELETE_JOBS,
-    id,
+    payload: {
+      id,
+    },
+  };
+};
+
+export const applyJobs = (details, id) => {
+  return {
+    type: APPLY_JOBS,
+    payload: {
+      id,
+      details: details,
+    },
   };
 };

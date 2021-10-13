@@ -9,6 +9,7 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 import NavBar from "./components/form/navbar/navBar";
 import AllJobs from "./components/student/jobs/jobs";
+import ApplyJob from "./components/student/jobs/applyJob";
 function App() {
   return (
     // <Provider store={store}>
@@ -42,6 +43,11 @@ function App() {
         <Switch>
           <Route exact path="/alljobs">
             <AllJobs />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route exact path="/applyjobs">
+            <ApplyJob />
           </Route>
         </Switch>
       </Router>

@@ -1,20 +1,27 @@
 import React, { useEffect } from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { applyJobs } from "../../../redux/action/actions";
 import "./style.scss";
+import { useHistory } from "react-router";
 
 const AllJobs = () => {
   let job = useSelector((state) => state.vacancy);
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     //console.log("job?.data", job?.data);
   }, [job]);
+  const handleJob = (details, id) => {
+    dispatch(applyJobs(details, id));
+    history.push("/applyjobs");
+  };
 
   return (
     <div>
       <div className="card-header">AVAILABLE JOBS</div>
-      {job?.data?.map(({ details }, index) => {
+      {job?.data?.map(({ details, id }, index) => {
         const { title, salary, gpa, date } = details;
         return (
           <div className="card text-center" key={index}>
@@ -23,10 +30,11 @@ const AllJobs = () => {
               <p className="card-text">Tentative Salary:{salary}</p>
               <p className="card-text">Minimum Gpa Required:{gpa}</p>
               <span className="button">
-                {/* <button type="button" className="btn btn-danger new">
-                  Applied Students
-                </button> */}
-                <button type="button" className="btn btn-danger new">
+                <button
+                  type="button"
+                  className="btn btn-danger new"
+                  onClick={() => handleJob(details, id)}
+                >
                   Apply Here
                 </button>
               </span>

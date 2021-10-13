@@ -5,16 +5,18 @@ import { addUser } from "../../../redux/action/actions";
 import "./style.scss";
 import img from "../../../images/Screenshot (4).png";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
+    role: "",
   });
 
   const auth = useSelector((state) => state.login);
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -26,8 +28,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log("AUTH", auth);
+    console.log("AUTH", auth.authenticated);
   }, [auth]);
+
+  if (auth.authenticated === true) {
+    auth.data.details.role === "company"
+      ? history.push("/company")
+      : history.push("/alljobs");
+  }
 
   return (
     <div>

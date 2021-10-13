@@ -1,34 +1,25 @@
 import React, { useEffect } from "react";
-
 import { useSelector } from "react-redux";
-import "./style.scss";
 
 const ApplyJob = () => {
-  let job = useSelector((state) => state.vacancy);
-  //const dispatch = useDispatch();
+  const applyJob = useSelector((state) => state.applyJob);
 
   useEffect(() => {
-    //console.log("job?.data", job?.data);
-  }, [job]);
+    console.log("jdbue", applyJob);
+  }, [applyJob]);
 
   return (
     <div>
-      <div className="card-header">AVAILABLE JOBS</div>
-      {job?.data?.map(({ details }, index) => {
-        const { title, salary, gpa, date } = details;
-        return (
-          <div className="card text-center" key={index}>
-            <div className="card-body">
-              <h5 className="card-title">Job Title:{title}</h5>
-              <p className="card-text">Tentative Salary:{salary}</p>
-              <p className="card-text">Minimum Gpa Required:{gpa}</p>
-            </div>
-            <div className="card-footer text-muted">
-              Last Date to apply:{date}
-            </div>
+      <h2>APPLIED JOBS</h2>;
+      {applyJob.data.map(({ details }, index) => (
+        <div className="card text-center" key={index}>
+          <div className="card-body">
+            <h5 className="card-title">Job Title:{details.title}</h5>
+            <p className="card-text">Tentative Salary:{details.salary}</p>
+            <p className="card-text">Minimum Gpa Required:{details.gpa}</p>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 };

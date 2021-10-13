@@ -1,4 +1,4 @@
-import { ADD_USER, SIGN_UP_USERS } from "../action/actionTypes";
+import { ADD_USER } from "../action/actionTypes";
 
 const initialState = {
   data: [
@@ -13,6 +13,7 @@ const initialState = {
       role: "company",
     },
   ],
+  authenticated: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -28,37 +29,9 @@ export const reducer = (state = initialState, action) => {
             user: user,
           },
         ],
+        authenticated: true,
       };
 
-    default:
-      return state;
-  }
-};
-
-//signup reducer//
-const signState = {
-  newData: [
-    {
-      firstName: "",
-      email: "",
-      password: "",
-    },
-  ],
-};
-
-export const SignUpReducer = (state = signState, actions) => {
-  switch (actions.type) {
-    case SIGN_UP_USERS:
-      const { id, users } = actions.payload;
-      return {
-        ...state,
-        data: [
-          {
-            id: id,
-            users: users,
-          },
-        ],
-      };
     default:
       return state;
   }

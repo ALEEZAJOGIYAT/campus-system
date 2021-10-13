@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import img from "../../../images/Screenshot (4).png";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import "./style.scss";
+import "./sign.scss";
+import { signUpUsers } from "../../../redux/action/actions";
 
 const SignUp = () => {
   const [users, setUsers] = useState({
@@ -11,14 +12,16 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "",
   });
 
-  const auth = useSelector((auth) => auth.sign);
-  useEffect(() => {
-    console.log("auth", auth);
-  }, [auth]);
-
+  const signAuth = useSelector((state) => state.sign);
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log("signAuth", signAuth);
+  }, [signAuth]);
 
   const handleChange = (e) => {
     setUsers(e.target.value);
@@ -27,9 +30,10 @@ const SignUp = () => {
 
   const handleSign = (e) => {
     e.preventDefault();
-    dispatch(SignUp(users));
+
+    dispatch(signUpUsers(users));
     setUsers("");
-    console.log(SignUp);
+    history.push("/company");
   };
 
   return (
@@ -69,7 +73,7 @@ const SignUp = () => {
       <input
         className="radio-button"
         type="checkbox"
-        name="gender"
+        name="role"
         value={users.email}
       />{" "}
       Student
@@ -77,7 +81,7 @@ const SignUp = () => {
       <input
         className="radio-buttons"
         type="checkbox"
-        name="gender"
+        name="role"
         value={users.email}
       />{" "}
       Company <br />
@@ -103,18 +107,18 @@ const SignUp = () => {
           type="password"
           name="confirmPassword"
           className="form-control"
-          id="exampleInputPassword1"
+          id="exampleInputPassword"
           value={users.confirmPassword}
           onChange={handleChange}
           required={true}
         />
       </div>
-      <Link to="./company">
-        <button type="submit" className="btn btn-primary " onClick={handleSign}>
-          Sign Up
-        </button>
-      </Link>
-      <Link className="login" to="./login">
+      {/* <Link to="/company"> */}
+      <button type="submit" className="btn btn-primary " onClick={handleSign}>
+        Sign Up
+      </button>
+      {/* </Link> */}
+      <Link className="login" to="/login">
         Already have an account{" "}
       </Link>
     </form>

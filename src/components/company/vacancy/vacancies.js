@@ -1,26 +1,25 @@
 import React, { useEffect } from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteJobs } from "../../../redux/action/actions";
 import "./style.scss";
 
 const Vacancy = () => {
   let job = useSelector((state) => state.vacancy);
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //console.log("job?.data", job?.data);
   }, [job]);
 
-  const handleDelete = (index) => {
-    const info = [...job.data, { ...job.data.details }];
-    info.splice(index, 1);
-    console.log("hjfb", info);
+  const handleDelete = (id) => {
+    dispatch(deleteJobs(id));
   };
 
   return (
     <div>
       <div className="card-header">VACANCIES</div>
-      {job?.data?.map(({ details }, index) => {
+      {job?.data?.map(({ details, id }, index) => {
         const { title, salary, gpa, date } = details;
         return (
           <div className="card text-center" key={index}>
@@ -29,13 +28,10 @@ const Vacancy = () => {
               <p className="card-text">Tentative Salary:{salary}</p>
               <p className="card-text">Minimum Gpa Required:{gpa}</p>
               <span className="button">
-                {/* <button type="button" className="btn btn-danger new">
-                  Applied Students
-                </button> */}
                 <button
                   type="button"
                   className="btn btn-danger new"
-                  onClick={(index) => handleDelete(index)}
+                  onClick={() => handleDelete(id)}
                 >
                   Delete
                 </button>
