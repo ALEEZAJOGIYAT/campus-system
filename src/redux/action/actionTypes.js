@@ -7,3 +7,4 @@ export const SIGN_UP_USERS = "SIGN_UP_USERS";
 export const POST_JOBS = "POST_JOBS";
 export const DELETE_JOBS = "DELETE_JOBS";
 export const APPLY_JOBS = "APPLY_JOBS";
+export const COMPANY = "COMPANY";

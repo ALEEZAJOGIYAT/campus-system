@@ -1,6 +1,7 @@
 import {
   ADD_USER,
   APPLY_JOBS,
+  COMPANY,
   DELETE_JOBS,
   POST_JOBS,
   SIGN_UP_USERS,
@@ -23,6 +24,18 @@ export const signUpUsers = (users) => {
     payload: {
       id: new Date().getTime().toString(),
       users: users,
+    },
+  };
+};
+
+//Company
+
+export const company = (id, user) => {
+  return {
+    type: COMPANY,
+    payload: {
+      id,
+      user,
     },
   };
 };

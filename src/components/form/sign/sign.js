@@ -8,11 +8,11 @@ import { signUpUsers } from "../../../redux/action/actions";
 
 const SignUp = () => {
   const [users, setUsers] = useState({
-    names: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    role: "",
+    role: "company",
   });
 
   const signAuth = useSelector((state) => state.sign);
@@ -20,7 +20,7 @@ const SignUp = () => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log("signAuth", signAuth);
+    console.log("signAuth", signAuth.newData);
   }, [signAuth]);
 
   const handleChange = (e) => {
@@ -30,11 +30,14 @@ const SignUp = () => {
 
   const handleSign = (e) => {
     e.preventDefault();
-
     dispatch(signUpUsers(users));
     setUsers("");
-    history.push("/company");
   };
+  if (signAuth.authenticated) {
+    signAuth.newData.users.role === "company"
+      ? history.push("/vacancy")
+      : history.push("/alljobs");
+  }
 
   return (
     <form className="sign-form">
@@ -46,7 +49,7 @@ const SignUp = () => {
         </label>
         <input
           type="text"
-          name="names"
+          name="name"
           className="form-control"
           id="exampleInputName"
           aria-describedby="emailHelp"
@@ -74,16 +77,18 @@ const SignUp = () => {
         className="radio-button"
         type="checkbox"
         name="role"
-        value={users.email}
-      />{" "}
+        value="student"
+        onChange={handleChange}
+      />
       Student
       <br />
       <input
         className="radio-buttons"
         type="checkbox"
         name="role"
-        value={users.email}
-      />{" "}
+        value="company"
+        onChange={handleChange}
+      />
       Company <br />
       <div className="mb-3">
         <label for="exampleInputPassword1" className="form-label">
@@ -113,13 +118,11 @@ const SignUp = () => {
           required={true}
         />
       </div>
-      {/* <Link to="/company"> */}
       <button type="submit" className="btn btn-primary " onClick={handleSign}>
         Sign Up
       </button>
-      {/* </Link> */}
-      <Link className="login" to="/login">
-        Already have an account{" "}
+      <Link className="login" to="/">
+        Already have an account
       </Link>
     </form>
   );

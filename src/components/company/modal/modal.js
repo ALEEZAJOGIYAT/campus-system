@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { postJob } from "../../redux/action/actions";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postJob } from "../../../redux/action/actions";
+import "./modal.scss";
 
 const Modal = () => {
   const [vacancy, setVacancy] = useState({
@@ -11,7 +12,7 @@ const Modal = () => {
     date: "",
   });
 
-  let job = useSelector((state) => state.vacancy);
+  // let job = useSelector((state) => state.vacancy);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -141,7 +142,7 @@ const Modal = () => {
                 <div className="modal-footer">
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-secondary cancel"
                     data-bs-dismiss="modal"
                   >
                     Cancel

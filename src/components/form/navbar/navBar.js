@@ -1,21 +1,27 @@
-import React from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./nav.scss";
-import Modal from "../../company/modal";
+import Modal from "../../company/modal/modal";
+import { useSelector } from "react-redux";
 
 const navItemsStudent = [
-  { name: "Companies", route: "/companies" },
+  { name: "Company", route: "/company" },
   { name: "All Jobs", route: "/alljobs" },
-  { name: "Applied Jobs", route: "/appliedjobs" },
+  { name: "Applied Jobs", route: "/applyjobs" },
   { name: "Profile", route: "/profile" },
 ];
 
 const navItemsCompany = [
-  { name: "Vacancies", route: "/company" },
+  { name: "Vacancies", route: "/vacancy" },
   { name: "Profile", route: "/companyprofile" },
 ];
 
 const NavBar = () => {
+  const auth = useSelector((state) => state.login);
+
+  useEffect(() => {}, [auth]);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -35,34 +41,29 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {navItemsStudent.map((item) => (
-              <Link to={item.route}>
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    {item.name}
-                  </a>
-                </li>
-              </Link>
-            ))}
-            {/* {!(
-              window.location.pathname === "/company" ||
-              window.location.pathname === "/profile"
-            ) && 
-            } */}
-
-            {navItemsCompany.map((items) => (
-              <Link to={items.route}>
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    {items.name}
-                  </a>
-                </li>
-              </Link>
-            ))}
+            {auth.data.user.role === "company"
+              ? navItemsCompany.map((items) => (
+                  <Link to={items.route}>
+                    <li className="nav-item">
+                      <a className="nav-link active" aria-current="page">
+                        {items.name}
+                      </a>
+                    </li>
+                  </Link>
+                ))
+              : navItemsStudent.map((item) => (
+                  <Link to={item.route}>
+                    <li className="nav-item">
+                      <a className="nav-link active" aria-current="page">
+                        {item.name}
+                      </a>
+                    </li>
+                  </Link>
+                ))}
           </ul>
           <Modal />
 
-          <Link to="/login">
+          <Link to="/">
             <button className="btn btn-outline-success" type="submit">
               Logout
             </button>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../../redux/action/actions";
 import "./style.scss";
@@ -17,6 +16,7 @@ const Login = () => {
   const auth = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const history = useHistory();
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -26,16 +26,15 @@ const Login = () => {
     dispatch(addUser(user));
     setUser("");
   };
+  if (auth.authenticated) {
+    auth.data.user.role === "student"
+      ? history.push("/alljobs")
+      : history.push("/vacancy");
+  }
 
   useEffect(() => {
-    console.log("AUTH", auth.authenticated);
+    console.log("AUTH", auth.data);
   }, [auth]);
-
-  if (auth.authenticated === true) {
-    auth.data.details.role === "company"
-      ? history.push("/company")
-      : history.push("/alljobs");
-  }
 
   return (
     <div>
@@ -43,7 +42,7 @@ const Login = () => {
         <img className="logo-img" src={img} alt="logo-img" />
         <h3> LOGIN FORM </h3>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">
+          <label for="exampleInputEmail1" className="form-label  is-invalid">
             Email address
           </label>
           <input
@@ -54,11 +53,11 @@ const Login = () => {
             name="email"
             value={user.email}
             onChange={handleChange}
-            required={true}
+            required
           />
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
+          <label for="exampleInputPassword1" className="form-label is-invalid">
             Password
           </label>
           <input
@@ -68,13 +67,29 @@ const Login = () => {
             name="password"
             value={user.password}
             onChange={handleChange}
-            required={true}
+            required
           />
         </div>
+        <input
+          className="radio-button"
+          type="checkbox"
+          name="role"
+          value="student"
+          onChange={handleChange}
+        />
+        Student
+        <br />
+        <input
+          className="radio-buttons"
+          type="checkbox"
+          name="role"
+          value="company"
+          onChange={handleChange}
+        />
+        Company <br />
         <button type="submit" className="btn btn-primary" onClick={login}>
           Login
         </button>
-
         <Link className="sign" to="/sign">
           Don't have an account{" "}
         </Link>

@@ -5,24 +5,18 @@ body {
   min-height: 150vh;
   width: 100vw;
 }
-// .App {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-// }
 
 .login-form {
-  //position: fixed;
   border: 4px solid rgb(56, 2, 56);
-  // height: 50rem;
-  // width: 35rem;
+  height: 50rem;
+  width: 35rem;
   margin-left: 46rem;
   margin-top: 8rem;
   align-items: center;
-  // margin-bottom: 3rem;
   box-sizing: border-box;
   background-color: white;
+  border-radius: 0.5rem;
+  //border-top-left-radius: 1rem;
 
   .form-label {
     @include font-family;
@@ -47,7 +41,7 @@ body {
   }
   .form-check-input {
     padding-inline: 0.5rem;
-    //margin-inline: 2rem;
+
     margin-left: 1rem;
     margin-top: 2rem;
   }
@@ -65,13 +59,13 @@ body {
   }
   .sign {
     @include font-family;
-    // padding-inline: 1rem;
-    // margin-inline: 1rem;
-    // margin-top: 1.5rem;
+    margin-top: 5rem;
     font-size: 12px;
+    margin-left: 5px;
   }
   .btn {
     margin: 2rem;
     margin-top: 3rem;
+    margin-left: 5rem;
   }
 }
