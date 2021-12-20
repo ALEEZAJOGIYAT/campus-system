@@ -39,7 +39,7 @@ function App() {
             <NavBar />
 
             <Route path="/vacancy" component={Vacancy} />
-            <Route path="/companyprofile" component={CompanyProfile} />
+            <Route path="/companyprofile" component={StudentProfile} />
 
             {/* STUDENT PAGE */}
             <Route path="/company" component={Company} />

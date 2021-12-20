@@ -19,33 +19,35 @@ const AllJobs = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="card-header">AVAILABLE JOBS</div>
-      {job?.data?.map(({ details, id }, index) => {
-        const { title, salary, gpa, date } = details;
-        return (
-          <div className="card text-center" key={index}>
-            <div className="card-body">
-              <h5 className="card-title">Job Title:{title}</h5>
-              <p className="card-text">Tentative Salary:{salary}</p>
-              <p className="card-text">Minimum Gpa Required:{gpa}</p>
-              <span className="button">
-                <button
-                  type="button"
-                  className="btn btn-danger new"
-                  onClick={() => handleJob(details, id)}
-                >
-                  Apply Here
-                </button>
-              </span>
+      <div className="flex-container">
+        {job?.data?.map(({ details, id }, index) => {
+          const { title, salary, gpa, date } = details;
+          return (
+            <div className="card text-center" key={index}>
+              <div className="card-body">
+                <h5 className="card-title">Job Title:{title}</h5>
+                <p className="card-text">Tentative Salary:{salary}</p>
+                <p className="card-text">Minimum Gpa Required:{gpa}</p>
+                <span className="button">
+                  <button
+                    type="button"
+                    className="btn btn-danger new"
+                    onClick={() => handleJob(details, id)}
+                  >
+                    Apply Here
+                  </button>
+                </span>
+              </div>
+              <div className="card-footer text-muted">
+                Last Date to apply:{date}
+              </div>
             </div>
-            <div className="card-footer text-muted">
-              Last Date to apply:{date}
-            </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

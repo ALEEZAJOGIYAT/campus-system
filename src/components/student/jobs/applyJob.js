@@ -7,18 +7,20 @@ const ApplyJob = () => {
   useEffect(() => {}, [applyJob]);
 
   return (
-    <div>
-      <h2>APPLIED JOBS</h2>;
-      {applyJob.data.map(({ details }, index) => (
-        <div className="card text-center" key={index}>
-          <div className="card-body">
-            <h5 className="card-title">Job Title:{details.title}</h5>
-            <p className="card-text">Tentative Salary:{details.salary}</p>
-            <p className="card-text">Minimum Gpa Required:{details.gpa}</p>
+    <>
+      <div className="card-header">APPLIED JOBS </div>;
+      <div className="flex-container">
+        {applyJob.data.map(({ details }, index) => (
+          <div className="card text-center" key={index}>
+            <div className="card-body">
+              <h5 className="card-title">Job Title:{details.title}</h5>
+              <p className="card-text">Tentative Salary:{details.salary}</p>
+              <p className="card-text">Minimum Gpa Required:{details.gpa}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 
