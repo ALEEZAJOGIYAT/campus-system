@@ -23,7 +23,7 @@ export const vacancyReducer = (state = initialState, action) => {
       const item = state.data.filter(
         (element) => element.id !== action.payload.id
       );
-      console.log("item", item);
+      // console.log("item", item);
       return {
         ...state,
         data: [...item],

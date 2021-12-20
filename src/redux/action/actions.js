@@ -5,6 +5,7 @@ import {
   DELETE_JOBS,
   POST_JOBS,
   SIGN_UP_USERS,
+  STUDENT_PROFILE,
 } from "../action/actionTypes";
 
 export const addUser = (user) => {
@@ -30,15 +31,26 @@ export const signUpUsers = (users) => {
 
 //Company
 
-export const company = (id, user) => {
+export const company = (user, id) => {
   return {
     type: COMPANY,
     payload: {
-      id,
-      user,
+      user: user,
     },
   };
 };
+
+//student profile
+export const studentProfile = (user, id) => {
+  return {
+    type: STUDENT_PROFILE,
+    payload: {
+      user: user,
+    },
+  };
+};
+
+//company profile
 
 //POST JOB ACTION
 

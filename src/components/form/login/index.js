@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../../../redux/action/actions";
+import { addUser, company } from "../../../redux/action/actions";
 import "./style.scss";
 import img from "../../../images/Screenshot (4).png";
 import { Link } from "react-router-dom";
@@ -24,17 +24,17 @@ const Login = () => {
   const login = (e) => {
     e.preventDefault();
     dispatch(addUser(user));
-    setUser("");
-  };
-  if (auth.authenticated) {
-    auth.data.user.role === "student"
-      ? history.push("/alljobs")
-      : history.push("/vacancy");
-  }
 
-  useEffect(() => {
-    console.log("AUTH", auth.data);
-  }, [auth]);
+    setUser("");
+    {
+      auth?.data?.user?.role === "student"
+        ? history.push("/company")
+        : history.push("/vacancy");
+      dispatch(company(user));
+    }
+  };
+
+  useEffect(() => {}, [auth]);
 
   return (
     <div>

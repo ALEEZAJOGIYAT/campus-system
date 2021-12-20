@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { company } from "../../redux/action/actions";
 
 const CompanyProfile = () => {
-  let auth = useSelector((state) => state.login);
-  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.login);
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    console.log("AUTH", auth);
+    console.log("AUTH", auth.data.user);
   }, [auth]);
 
   return (

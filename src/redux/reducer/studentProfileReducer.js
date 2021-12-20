@@ -1,4 +1,4 @@
-import { COMPANY } from "../action/actionTypes";
+import { STUDENT_PROFILE } from "../action/actionTypes";
 
 const initialState = {
   data: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export const companyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case COMPANY:
+    case STUDENT_PROFILE:
       return {
         ...state,
         data: [

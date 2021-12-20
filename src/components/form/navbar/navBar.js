@@ -3,13 +3,14 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./nav.scss";
 import Modal from "../../company/modal/modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+//import { addUser } from "../../../redux/action/actions";
 
 const navItemsStudent = [
   { name: "Company", route: "/company" },
   { name: "All Jobs", route: "/alljobs" },
   { name: "Applied Jobs", route: "/applyjobs" },
-  { name: "Profile", route: "/profile" },
+  { name: "Profile", route: "/studentprofile" },
 ];
 
 const navItemsCompany = [
@@ -19,8 +20,11 @@ const navItemsCompany = [
 
 const NavBar = () => {
   const auth = useSelector((state) => state.login);
+  //const dispatch = useDispatch();
 
-  useEffect(() => {}, [auth]);
+  useEffect(() => {
+    console.log("AUTH", auth);
+  }, [auth]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,7 +45,7 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {auth.data.user.role === "company"
+            {auth?.data?.user?.role === "company"
               ? navItemsCompany.map((items) => (
                   <Link to={items.route}>
                     <li className="nav-item">
@@ -61,13 +65,24 @@ const NavBar = () => {
                   </Link>
                 ))}
           </ul>
-          <Modal />
-
-          <Link to="/">
-            <button className="btn btn-outline-success" type="submit">
-              Logout
-            </button>
-          </Link>
+          {auth?.data?.user?.role === "company" ? (
+            <div>
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <button className="btn">
+                    <Modal />
+                  </button>
+                  <Link to="/">
+                    <button className="btn btn-outline-primary">Logout</button>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/">
+              <button className="btn btn-outline-primary">Logout</button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

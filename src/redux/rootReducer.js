@@ -12,3 +12,7 @@ export const rootReducer = combineReducers({
   applyJob: applyJobReducer,
   company: companyReducer,
 });
+
+// #s4px-3s0g
+
+// 030183888

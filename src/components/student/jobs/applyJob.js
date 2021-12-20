@@ -4,9 +4,7 @@ import { useSelector } from "react-redux";
 const ApplyJob = () => {
   const applyJob = useSelector((state) => state.applyJob);
 
-  useEffect(() => {
-    console.log("jdbue", applyJob);
-  }, [applyJob]);
+  useEffect(() => {}, [applyJob]);
 
   return (
     <div>
