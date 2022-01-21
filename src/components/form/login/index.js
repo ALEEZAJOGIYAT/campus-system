@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, company } from "../../../redux/action/actions";
+import { addUser, studentProfile } from "../../../redux/action/actions";
 import "./style.scss";
 import img from "../../../images/Screenshot (4).png";
 import { Link } from "react-router-dom";
@@ -24,13 +24,13 @@ const Login = () => {
   const login = (e) => {
     e.preventDefault();
     dispatch(addUser(user));
-
+    dispatch(studentProfile(user));
     setUser("");
+
     {
       auth?.data?.user?.role === "student"
-        ? history.push("/company")
-        : history.push("/vacancy");
-      dispatch(company(user));
+        ? history.push("/vacancy")
+        : history.push("/alljobs");
     }
   };
 
@@ -70,23 +70,26 @@ const Login = () => {
             required
           />
         </div>
-        <input
-          className="radio-button"
-          type="checkbox"
-          name="role"
-          value="student"
-          onChange={handleChange}
-        />
-        Student
-        <br />
-        <input
-          className="radio-buttons"
-          type="checkbox"
-          name="role"
-          value="company"
-          onChange={handleChange}
-        />
-        Company <br />
+
+        <div className="mb-3">
+          <input
+            className="radio-button"
+            type="radio"
+            name="role"
+            value="student"
+            onChange={handleChange}
+          />
+          Student
+          <br />
+          <input
+            className="radio-buttons"
+            type="radio"
+            name="role"
+            value="company"
+            onChange={handleChange}
+          />
+          <label>Company </label>
+        </div>
         <button type="submit" className="btn btn-primary" onClick={login}>
           Login
         </button>

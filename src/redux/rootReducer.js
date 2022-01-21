@@ -10,7 +10,7 @@ export const rootReducer = combineReducers({
   sign: SignUpReducer,
   vacancy: vacancyReducer,
   applyJob: applyJobReducer,
-  company: companyReducer,
+  studentProfile: companyReducer,
 });
 
 // #s4px-3s0g
