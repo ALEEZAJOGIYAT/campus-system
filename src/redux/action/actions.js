@@ -50,8 +50,6 @@ export const studentProfile = (user, id) => {
   };
 };
 
-//company profile
-
 //POST JOB ACTION
 
 export const postJob = (details) => {
