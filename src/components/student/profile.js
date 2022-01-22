@@ -1,64 +1,110 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const StudentProfile = () => {
+  const [close, setClose] = useState(false);
+
   let auth = useSelector((state) => state.login);
   let profile = useSelector((state) => state.studentProfile);
 
-  useEffect(() => {
-    console.log("auth", profile?.user);
-  }, [auth]);
+  useEffect(() => {}, [auth]);
 
   return (
     <div>
       {auth?.data?.user?.role === "student"
         ? profile?.data?.map(({ user }, index) => {
             return (
-              <form className="login-form" key={index}>
-                {/* <img className="logo-img" src={img} alt="logo-img" /> */}
-                <h3> STUDENT PROFILE </h3>
-                <div className="mb-3">
-                  <label
-                    for="exampleInputEmail1"
-                    className="form-label  is-invalid"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    name="email"
-                    value={user.email}
-                  />
+              <div tabindex="-1" key={index}>
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">STUDENT PROFILE</h5>
+                    </div>
+                    <div className="modal-body">
+                      <div className="container">
+                        <div className="form-group">
+                          <label className="labels form-label" for="title">
+                            Email Address
+                          </label>
+                          <input
+                            placeholder="Email Title here"
+                            name="title"
+                            type="text"
+                            id="title"
+                            className="form-control"
+                            value={user.email}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label className="labels form-label" for="title">
+                            Description
+                          </label>
+                          <textarea
+                            rows="3"
+                            name="jobDescription"
+                            id="exampleForm.ControlTextarea1"
+                            className="form-control"
+                          />
+                        </div>
+                      </div>
+                      {/* <p>{user.email}</p> */}
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-dark">
+                        Update
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </form>
+              </div>
             );
           })
         : profile?.data?.map(({ user }, index) => {
             return (
-              <form className="login-form" key={index}>
-                {/* <img className="logo-img" src={img} alt="logo-img" /> */}
-                <h3> COMPANY USER PROFILE </h3>
-                <div className="mb-3">
-                  <label
-                    for="exampleInputEmail1"
-                    className="form-label  is-invalid"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    name="email"
-                    value={user.email}
-                  />
+              <div tabindex="-1" key={index}>
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">COMPANY PROFILE</h5>
+                    </div>
+                    <div className="modal-body">
+                      <div className="container">
+                        <div className="form-group">
+                          <label className="labels form-label" for="title">
+                            Email Address
+                          </label>
+                          <input
+                            placeholder="Email Title here"
+                            name="title"
+                            type="text"
+                            id="title"
+                            className="form-control"
+                            value={user.email}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label className="labels form-label" for="title">
+                            Description
+                          </label>
+                          <textarea
+                            rows="3"
+                            name="jobDescription"
+                            id="exampleForm.ControlTextarea1"
+                            className="form-control"
+                          />
+                        </div>
+                      </div>
+                      {/* <p>{user.email}</p> */}
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-dark">
+                        Update
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </form>
+              </div>
             );
           })}
     </div>

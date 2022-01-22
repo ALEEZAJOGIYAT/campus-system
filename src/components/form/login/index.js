@@ -22,18 +22,14 @@ const Login = () => {
   };
 
   const login = (e) => {
-    if (user.role && user.email && user.password) {
-      e.preventDefault();
-      setUser("");
-      dispatch(addUser(user));
-    } else {
-      console.log("kkuubu");
-    }
+    e.preventDefault();
+    dispatch(addUser(user));
+    setUser("");
 
     {
       auth?.data?.user?.role === "student"
-        ? history.push("/alljobs")
-        : history.push("/vacancy");
+        ? history.push("/vacancy")
+        : history.push("/alljobs");
       dispatch(studentProfile(user));
     }
 
@@ -85,7 +81,7 @@ const Login = () => {
           type="checkbox"
           name="role"
           value="student"
-          required={true}
+          onChange={handleChange}
         />
         Student
         <br />
@@ -94,7 +90,7 @@ const Login = () => {
           type="checkbox"
           name="role"
           value="company"
-          required
+          onChange={handleChange}
         />
         Company <br />
         <div className="footer">
