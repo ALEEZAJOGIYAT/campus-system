@@ -30,10 +30,10 @@ const AllJobs = () => {
                 <h5 className="card-title">Job Title:{title}</h5>
                 <p className="card-text">Tentative Salary:{salary}</p>
                 <p className="card-text">Minimum Gpa Required:{gpa}</p>
-                <span className="button">
+                <span className="buton">
                   <button
                     type="button"
-                    className="btn btn-danger new"
+                    className="btn btn-dark apply"
                     onClick={() => handleJob(details, id)}
                   >
                     Apply Here

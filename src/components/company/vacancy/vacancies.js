@@ -32,7 +32,7 @@ const Vacancy = () => {
                   <span className="button">
                     <button
                       type="button"
-                      className="btn btn-danger new"
+                      className="btn btn-dark new"
                       onClick={() => handleDelete(id)}
                     >
                       Delete

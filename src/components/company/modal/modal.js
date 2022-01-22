@@ -29,7 +29,7 @@ const Modal = () => {
   const post = (e) => {
     e.preventDefault();
     dispatch(postJob(vacancy));
-    console.log("jebde", vacancy);
+    // console.log("jebde", vacancy);
     setVacancy("");
   };
 
@@ -147,11 +147,7 @@ const Modal = () => {
                   >
                     Cancel
                   </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={post}
-                  >
+                  <button type="button" className="btn  job" onClick={post}>
                     Post Job
                   </button>
                 </div>

@@ -69,7 +69,7 @@ const NavBar = () => {
             <div>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <button className="btn">
+                  <button className="btn new">
                     <Modal />
                   </button>
                   <Link to="/">

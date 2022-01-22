@@ -9,7 +9,7 @@ const initialState = {
   authenticated: false,
 };
 
-export const reducer = (state = initialState, action) => {
+export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_USER:
       const { id, user } = action.payload;

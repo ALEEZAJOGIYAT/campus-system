@@ -59,13 +59,23 @@ body {
   }
   .sign {
     @include font-family;
-    margin-top: 5rem;
+    //margin-top: 7rem;
     font-size: 12px;
     margin-left: 5px;
   }
   .btn {
-    margin: 2rem;
-    margin-top: 3rem;
-    margin-left: 5rem;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    margin-left: 7rem;
+    margin-top: 1.5rem;
+    // margin: 5px;
+
+    background-color: #2e74be;
+    color: #fff;
+
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    // margin-top: 3rem;
+    // margin-left: 5rem;
   }
 }

@@ -46,18 +46,20 @@
   border-bottom-left-radius: calc(0.3rem - 1px);
 
   .cancel {
-    margin-top: 6rem;
-    margin-left: 19px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .job {
+    margin: 5px;
+
+    background-color: #193758;
+    color: #fff;
+
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
 }
-// margin: .25rem;
-//     margin-top: 0.25rem;
-//     margin-right: 0.25rem;
-//     margin-bottom: 0.25rem;
-//     margin-left: 0.25rem;
-// }
+
 .btn-primary {
   color: #fff;
   background-color: #007bff;

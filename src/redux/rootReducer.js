@@ -1,16 +1,16 @@
 import { combineReducers } from "redux";
-import { reducer } from "./reducer/reducer";
+import { loginReducer } from "./reducer/loginReducer";
 import { SignUpReducer } from "./reducer/signReducer";
 import { vacancyReducer } from "./reducer/vacancyReducer";
 import { applyJobReducer } from "./reducer/applyJobReducer";
-import { companyReducer } from "./reducer/companyReducer";
+import { studentProfileReducer } from "./reducer/stuProfileReducer";
 
 export const rootReducer = combineReducers({
-  login: reducer,
+  login: loginReducer,
   sign: SignUpReducer,
   vacancy: vacancyReducer,
   applyJob: applyJobReducer,
-  studentProfile: companyReducer,
+  studentProfile: studentProfileReducer,
 });
 
 // #s4px-3s0g
